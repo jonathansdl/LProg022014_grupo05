@@ -1,0 +1,49 @@
+CREATE TABLE clientes
+
+(
+  
+  id serial NOT NULL,
+
+  nome character varying(100),
+
+  cpf character varying(20),
+
+  telefone1 character varying(20),
+
+  telefone2 character varying(20),
+
+  endereco text,
+  complemento text,
+
+  cep character varying(10),
+
+  estado text,
+  cidade text,
+
+  carroscliente text,
+
+
+  CONSTRAINT id_pk PRIMARY KEY (id)
+)
+
+
+CREATE TABLE produtos
+
+(
+
+  id serial NOT NULL,
+
+  produto text,
+
+  anomodelo text,
+
+  descricao text,
+
+  precocusto character varying(100),
+
+  precovenda character varying(100),
+
+
+  CONSTRAINT id_pk_prod PRIMARY KEY (id)
+
+)
