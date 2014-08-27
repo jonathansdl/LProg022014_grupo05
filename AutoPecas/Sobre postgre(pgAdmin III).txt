@@ -1,3 +1,7 @@
+Após instalar o postgre usando a senha 1020, Crie uma Database com o nome: "Clientes"(sem aspas) e execute as 2 querrys a seguir:
+
+
+
 CREATE TABLE clientes
 
 (
@@ -12,12 +16,15 @@ CREATE TABLE clientes
 
   telefone2 character varying(20),
 
+  email text,
   endereco text,
+
   complemento text,
 
   cep character varying(10),
 
   estado text,
+
   cidade text,
 
   carroscliente text,
@@ -25,6 +32,9 @@ CREATE TABLE clientes
 
   CONSTRAINT id_pk PRIMARY KEY (id)
 )
+
+
+************************************************
 
 
 CREATE TABLE produtos
@@ -47,3 +57,14 @@ CREATE TABLE produtos
   CONSTRAINT id_pk_prod PRIMARY KEY (id)
 
 )
+
+
+************************************************
+
+Para certificar de que o cliente ou produto foi cadastrado use a seguinte querry:
+
+select *from (nome da tabela)
+
+Ex:
+
+select *from clientes
