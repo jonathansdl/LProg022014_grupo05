@@ -69,8 +69,8 @@ public class ProdutoControl {
 			Connection ExConn = (Connection) banco.abrirBDConn();
 			Statement stmt = (Statement) ExConn.createStatement();
 			
-			res = stmt.executeUpdate("UPDATE  banco.produto SET nome = '"+nome+"', quantidade = '"+quantidade+"', descricao = '"+descricao+"',"
-					+ " carros = '"+ carros+"', custo = '"+custo+"', venda = '"+venda+"' WHERE idProduto ="+ProBin.getCodigo()) ;
+			res = stmt.executeUpdate("UPDATE  banco.produto SET nome = '"+nome+"', quantidade = '"+quantidade+"', descriçao = '"+descricao+"',"
+					+ " carros = '"+ carros+"', precoCusto = '"+custo+"', precoVenda = '"+venda+"' WHERE idProduto ="+ProBin.getCodigo()) ;
 			if(res==1)JOptionPane.showMessageDialog(null, "Dados do produto atualizados com sucesso.") ;
 			stmt.close();
 			banco.fecharBDConn();		
@@ -108,7 +108,7 @@ try{
 					banco.fecharBDConn();		
 				}catch (Exception e){
 					
-					JOptionPane.showMessageDialog(null,"Os dados não puderam ser atualizados...");
+					JOptionPane.showMessageDialog(null,"Os dados não puderam ser encontrados...");
 			}
 			
 				

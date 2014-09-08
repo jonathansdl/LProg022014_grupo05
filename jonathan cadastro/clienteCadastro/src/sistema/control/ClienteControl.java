@@ -15,14 +15,14 @@ public class ClienteControl {
 	private static final java.sql.Connection ExConn = null;
 
 
-	public  void InsireDados(String nome,String email,String endereco,String telefone,String cidade,String estado){
+	public  void InsireDados(String nome,String email,String endereco,String telefone,String cidade,String estado,String Cpf,String Cep,String carro ){
 			conexao banco = new conexao();
 			String retorno = "erro";
 			try{
 
 			Connection ExConn = (Connection) banco.abrirBDConn();
 			Statement stmt = (Statement) ExConn.createStatement();
-			String sSQL = "INSERT INTO banco.cliente VALUES(null,'"+nome+"','"+email+"','"+telefone+"','"+ endereco+"','"+cidade+"','"+estado+"');";
+			String sSQL = "INSERT INTO banco.cliente VALUES(null,'"+nome+"','"+email+"','"+telefone+"','"+ endereco+"','"+cidade+"','"+estado+"','"+Cpf+"','"+Cep+"','"+carro+"');";
 			System.out.print(sSQL);
 			boolean res = stmt.execute(sSQL);
 
@@ -58,7 +58,7 @@ public class ClienteControl {
 		
 	}
 	
-	public String AtualizarDados(String nome,String email,String endereco,String telefone,String cidade,String estado,
+	public String AtualizarDados(String nome,String email,String endereco,String telefone,String cidade,String estado,String Cpf,String Cep,String carro,
 			ClienteBin CliBin){
 		conexao banco = new conexao();
 		String retorno = "erro";
@@ -70,7 +70,7 @@ public class ClienteControl {
 			Statement stmt = (Statement) ExConn.createStatement();
 			
 			res = stmt.executeUpdate("UPDATE  banco.cliente SET nome = '"+nome+"', email = '"+email+"', telefone = '"+telefone+"',"
-					+ " endereco = '"+ endereco+"', cidade = '"+cidade+"', estado = '"+estado+"' WHERE idCliente ="+CliBin.getCodigo()) ;
+					+ " endereco = '"+ endereco+"', cidade = '"+cidade+"', estado = '"+estado+"', Cep = '"+Cep+"', Cpf = '"+Cpf+"', carro = '"+carro+"' WHERE idCliente ="+CliBin.getCodigo()) ;
 			if(res==1)JOptionPane.showMessageDialog(null, "Dados do cliente atualizados com sucesso.") ;
 			stmt.close();
 			banco.fecharBDConn();		
@@ -84,13 +84,13 @@ public class ClienteControl {
 		
 	}
 	
-	public void BuscarDados (int codigo,ClienteBin CliBin){
+	public void BuscarDados (int Cpf,ClienteBin CliBin){
 		conexao banco = new conexao();
 try{
 			
 			Connection ExConn = (Connection) banco.abrirBDConn();
 			Statement stmt = (Statement) ExConn.createStatement();
-			String sSQL = "SELECT * FROM banco.cliente WHERE idCliente = "+codigo ;
+			String sSQL = "SELECT * FROM banco.cliente WHERE Cpf = "+Cpf ;
 			ResultSet rs = stmt.executeQuery(sSQL);
 			
 			while(rs.next())
@@ -102,6 +102,9 @@ try{
 					CliBin.setCidade  (rs.getString("cidade"));
 					CliBin.setTelefone  (rs.getString("telefone"));
 					CliBin.setEmail (rs.getString("email"));
+					CliBin.setCpf (rs.getString("Cpf"));
+					CliBin.setCep (rs.getString("Cep"));
+					CliBin.setCarro (rs.getString("carro"));
 			}
 					
 					stmt.close();

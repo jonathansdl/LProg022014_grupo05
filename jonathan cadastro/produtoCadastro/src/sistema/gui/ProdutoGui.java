@@ -87,27 +87,28 @@ public class ProdutoGui extends JFrame {
 		jtfNome.setColumns(10);
 		
 		jtfQuantidade = new JTextField();
-		jtfQuantidade.setBounds(483, 36, 64, 20);
+		jtfQuantidade.setBounds(495, 36, 64, 20);
 		contentPane.add(jtfQuantidade);
 		jtfQuantidade.setColumns(10);
 		
 		jtfDescricao = new JTextField();
-		jtfDescricao.setBounds(66, 97, 479, 58);
+		jtfDescricao.setBounds(78, 97, 481, 58);
 		contentPane.add(jtfDescricao);
 		jtfDescricao.setColumns(10);
 		
-		jtfCarros = new JTextField();
-		jtfCarros.setBounds(66, 171, 465, 20);
+		jtfCarros = 
+				new JTextField();
+		jtfCarros.setBounds(61, 172, 498, 58);
 		contentPane.add(jtfCarros);
 		jtfCarros.setColumns(10);
 		
 		jtfCusto = new JTextField();
-		jtfCusto.setBounds(101, 61, 86, 20);
+		jtfCusto.setBounds(101, 61, 127, 20);
 		contentPane.add(jtfCusto);
 		jtfCusto.setColumns(10);
 		
 		jtfVenda = new JTextField();
-		jtfVenda.setBounds(363, 64, 86, 20);
+		jtfVenda.setBounds(367, 61, 125, 20);
 		contentPane.add(jtfVenda);
 		jtfVenda.setColumns(10);
 		
@@ -125,7 +126,7 @@ public class ProdutoGui extends JFrame {
 				
 			}
 		});
-		btnCadastrar.setBounds(172, 271, 89, 23);
+		btnCadastrar.setBounds(208, 271, 95, 23);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -149,7 +150,7 @@ public class ProdutoGui extends JFrame {
 				ProControl.ExcluirCliente(codigo);
 			}
 		});
-		btnExcluir.setBounds(68, 271, 89, 23);
+		btnExcluir.setBounds(109, 271, 89, 23);
 		contentPane.add(btnExcluir);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
@@ -175,7 +176,7 @@ public class ProdutoGui extends JFrame {
 				jtfVenda.setText(ProBin.getVenda());
 			}
 		});
-		btnBuscar.setBounds(10, 237, 89, 23);
+		btnBuscar.setBounds(10, 271, 89, 23);
 		contentPane.add(btnBuscar);
 	}
 }

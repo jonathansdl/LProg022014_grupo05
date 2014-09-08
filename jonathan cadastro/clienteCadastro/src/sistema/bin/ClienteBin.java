@@ -8,6 +8,9 @@ public class ClienteBin {
 	private String endereco;
 	private String cidade;
 	private String estado;
+	private String Cpf;
+	private String Cep;
+	private String carro;
 	
 	private int codigo;
 
@@ -58,6 +61,32 @@ public class ClienteBin {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	public String getCpf() {
+		return Cpf;
+	}
+
+	public void setCpf(String Cpf) {
+		this.Cpf = Cpf;
+	}
+	
+	public String getCep() {
+		return Cep;
+	}
+
+	public void setCep(String Cep) {
+		this.Cep = Cep;
+	}
+	
+	public String getCarro() {
+		return carro;
+	}
+
+	public void setCarro(String carro) {
+		this.carro = carro;
+	}
+	
+	
 
 	public int getCodigo() {
 		return codigo;
