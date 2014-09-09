@@ -45,6 +45,7 @@ CREATE TABLE produtos
 
   produto text,
 
+  quantidade text,
   anomodelo text,
 
   descricao text,

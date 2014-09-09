@@ -24,14 +24,15 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
      */
     public void cadastrarProdutos(){
         
-        String sql = "Insert into produtos(produto,anomodelo,descricao,precocusto,precovenda) values(?,?,?,?,?)";
+        String sql = "Insert into produtos(produto,quantidade,anomodelo,descricao,precocusto,precovenda) values(?,?,?,?,?,?)";
         try{
             pst = con.prepareStatement(sql);
             pst.setString(1,jtfProduto.getText());
-            pst.setString(2,jtfAnomodelo.getText());
-            pst.setString(3,jtfDescricao.getText());
-            pst.setString(4,jtfPrecocusto.getText());
-            pst.setString(5,jtfPrecovenda.getText());
+            pst.setString(2,jtfProduto.getText());
+            pst.setString(3,jtfAnomodelo.getText());
+            pst.setString(4,jtfDescricao.getText());
+            pst.setString(5,jtfPrecocusto.getText());
+            pst.setString(6,jtfPrecovenda.getText());
 
             
             pst.execute();
@@ -59,6 +60,9 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
         jtfPrecovenda = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
         jbLimpar = new javax.swing.JButton();
+        jtfQuantidade = new javax.swing.JTextField();
+        jlQuantidade = new javax.swing.JLabel();
+        jbSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Peças");
@@ -91,33 +95,51 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
             }
         });
 
+        jlQuantidade.setText("Quantidade:");
+
+        jbSair.setText("Sair");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)
-                        .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jlQuantidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlProduto)
-                            .addComponent(jlAnomodelo)
-                            .addComponent(jlDescricao)
-                            .addComponent(jlPrecocusto)
-                            .addComponent(jlPrecovenda))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(72, 72, 72)
+                                .addComponent(jbSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlProduto)
+                                .addComponent(jlAnomodelo)
+                                .addComponent(jlDescricao)
+                                .addComponent(jlPrecocusto)
+                                .addComponent(jlPrecovenda)))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlTitulo)
-                            .addComponent(jtfProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfAnomodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfPrecocusto, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfPrecovenda, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jlTitulo)
+                                .addComponent(jtfProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfAnomodelo, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPrecocusto, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jtfPrecovenda, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jbLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(79, 79, 79)
+                                .addComponent(jbCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +150,11 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlProduto)
                     .addComponent(jtfProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jlQuantidade)
+                    .addComponent(jtfQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlAnomodelo)
                     .addComponent(jtfAnomodelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,10 +170,11 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPrecovenda)
                     .addComponent(jtfPrecovenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCadastrar)
-                    .addComponent(jbLimpar))
+                    .addComponent(jbLimpar)
+                    .addComponent(jbSair))
                 .addGap(24, 24, 24))
         );
 
@@ -155,8 +182,9 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimparActionPerformed
-        jtfProduto.setText("");                 //Função do Botão Limpar: Zerar todos os campos de texto vide linha 120 até 124
-        jtfAnomodelo.setText("");                //Para inserir + linhas ou váriáveis editar estas também.
+        jtfProduto.setText("");
+        jtfQuantidade.setText("");                  //Função do Botão Limpar: Zerar todos os campos de texto vide linha 171 até 176
+        jtfAnomodelo.setText("");                   //Para inserir + linhas ou váriáveis editar estas também.
         jtfDescricao.setText("");
         jtfPrecocusto.setText("");
         jtfPrecovenda.setText("");
@@ -165,6 +193,10 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
         cadastrarProdutos();
     }//GEN-LAST:event_jbCadastrarActionPerformed
+
+    private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_jbSairActionPerformed
 
 
     public static void main(String args[]) {
@@ -206,16 +238,19 @@ public class fjfCadastroProdutos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCadastrar;
     private javax.swing.JButton jbLimpar;
+    private javax.swing.JButton jbSair;
     private javax.swing.JLabel jlAnomodelo;
     private javax.swing.JLabel jlDescricao;
     private javax.swing.JLabel jlPrecocusto;
     private javax.swing.JLabel jlPrecovenda;
     private javax.swing.JLabel jlProduto;
+    private javax.swing.JLabel jlQuantidade;
     private javax.swing.JLabel jlTitulo;
     private javax.swing.JTextField jtfAnomodelo;
     private javax.swing.JTextField jtfDescricao;
     private javax.swing.JTextField jtfPrecocusto;
     private javax.swing.JTextField jtfPrecovenda;
     private javax.swing.JTextField jtfProduto;
+    private javax.swing.JTextField jtfQuantidade;
     // End of variables declaration//GEN-END:variables
 }
